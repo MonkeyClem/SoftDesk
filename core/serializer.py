@@ -13,9 +13,9 @@ class UserSerializer(serializers.ModelSerializer) :
             'email',
             'age',
             'can_be_contacted',
-            'can_data_be_shared',
+            'accept_to_share_data',
         ]
-        extraKwargs = {'password' : {'write_only' : True}}
+        extra_kwargs = {'password' : {'write_only' : True}}
 
     def create_user(self, validated_data) : 
         user = User.objects.create_user(**validated_data) 
