@@ -24,7 +24,7 @@ class Contributor(models.Model):
     )
 
     role = models.CharField(max_length=20, choices=ROLES, default='CONTRIBUTOR')    
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} -> {self.project.title} - ({self.role})"

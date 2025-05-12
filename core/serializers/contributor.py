@@ -1,4 +1,5 @@
-from rest_framework import serializers
+from rest_framework import serializers  
+
 from core.models.contributor import Contributor
 
 class ContributorSerializer(serializers.ModelSerializer):

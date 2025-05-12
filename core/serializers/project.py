@@ -13,9 +13,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'created_time'
         ]
 
-        read_only_fields=[
-            'created_time'
-      ]
+        read_only_fields=['created_time']
         
     def create_project(self, validated_data) : 
         project = Project.objects.create(**validated_data)
