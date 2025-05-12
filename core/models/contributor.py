@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from .projects import Project
+from .project import Project
 
 class Contributor(models.Model): 
     AUTHOR = 'AUTHOR'
