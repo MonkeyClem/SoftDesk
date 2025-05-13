@@ -9,6 +9,8 @@ from .serializers.contributor import ContributorSerializer
 from rest_framework import permissions
 from core.models.issue import Issue
 from core.serializers.issue import IssueSerializer
+from .models import Comment, Issue, Project
+from .serializers.comment import CommentSerializer
 # Create your views here.
 
 User = get_user_model()
@@ -30,7 +32,16 @@ class ContributorViewSet(ModelViewSet):
 class IssueViewSet(ModelViewSet):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class CommentViewSet(ModelViewSet): 
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    # permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
