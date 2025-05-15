@@ -8,6 +8,8 @@ shell = "*"
 django = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
+pyyaml = "*"
+inflection = "*"
 
 [dev-packages]
 

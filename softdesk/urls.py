@@ -1,3 +1,4 @@
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 """
 URL configuration for softdesk project.
 
@@ -16,8 +17,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+from rest_framework.schemas import get_schema_view
+from rest_framework import permissions
+from rest_framework.renderers import CoreJSONRenderer
+from rest_framework.authtoken import views as drf_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , include('core.urls'))
+    path('' , include('core.urls')),
+    path('api-auth/', include('rest_framework.urls')),  # ✨ Interface login DRF
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
 ]
