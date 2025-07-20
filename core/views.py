@@ -3,18 +3,18 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import get_user_model
 from .serializer import UserSerializer
-from .models.project import Project
-from .models.contributor import Contributor
 from .serializers.project import ProjectSerializer
 from .serializers.contributor import ContributorSerializer
 from rest_framework import permissions
 from core.models.issue import Issue
 from core.serializers.issue import IssueSerializer
-from .models import Comment, Issue, Project
 from .serializers.comment import CommentSerializer
 from rest_framework.exceptions import PermissionDenied
 from .permissions import isCommentAuthorOrReadOnly
+from models import Project, Contributor, Issue, Comment
 
+## TO DO : See why the import certain serializers does not work
+from serializers import ProjectSerializer, ContributorSerializer, IssueSerializer, CommentSerializer
 # Create your views here.
 
 User = get_user_model()
@@ -55,8 +55,6 @@ class IssueViewSet(ModelViewSet):
     # queryset = Issue.objects.all()
     serializer_class = IssueSerializer
     permission_classes = [permissions.IsAuthenticated]
-    print("On est dans le viexSete")
-
     # def perform_create(self, serializer):
     #     print("Perfom Create running")
     #     try :
