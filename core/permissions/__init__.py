@@ -1,1 +1,1 @@
-from .permissions import isCommentAuthorOrReadOnly
+from .permissions import IsCommentAuthorOrReadOnly

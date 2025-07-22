@@ -9,9 +9,7 @@ from django.core.exceptions import ValidationError
 if we want to create a user via shell)"""
 def validate_age(value : int) : 
     if value < 15 : 
-        raise ValidationError(
-            f'You must be at least 15 years old to register... Sorry :( )'
-        )
+        raise ValidationError('You must be at least 15 years old to register... Sorry :(')
     
 class CustomUserManager(BaseUserManager): 
     def create_user(self, username, email, password= None, age=None, **extra_fields): 
@@ -21,7 +19,7 @@ class CustomUserManager(BaseUserManager):
         user = self.model(username=username, email = email, age=age, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
-        pass 
+        return user # Seems to be not mandatory, in the sense that the user is saved in the database, but it is a good practice to return the created user
 
     def create_superuser(self, username, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)

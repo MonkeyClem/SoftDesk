@@ -1,10 +1,10 @@
-# 📌 SoftDesk – API REST de gestion de projets et de bugs
+#  SoftDesk – API REST de gestion de projets et de bugs
 
 SoftDesk est une API web développée avec Django REST Framework, permettant de gérer des projets collaboratifs, des tickets (issues), et des commentaires liés.
 
 ---
 
-## 🚀 Fonctionnalités
+##  Fonctionnalités
 
 - Authentification sécurisée via JWT (SimpleJWT)
 - Gestion des utilisateurs avec vérification de l'âge (RGPD)
@@ -17,7 +17,7 @@ SoftDesk est une API web développée avec Django REST Framework, permettant de 
 
 ---
 
-## 📦 Stack technique
+##  Stack technique
 
 - Python 3.12
 - Django 5.x
@@ -28,7 +28,7 @@ SoftDesk est une API web développée avec Django REST Framework, permettant de 
 
 ---
 
-## 🛡 Sécurité et RGPD
+##  Sécurité et RGPD
 
 L’application respecte les principes du RGPD :
 - Consentement explicite demandé pour être contacté ou partager ses données
@@ -37,7 +37,7 @@ L’application respecte les principes du RGPD :
 
 ---
 
-## 🔧 Installation
+##  Installation
 
 ```bash
 # 1. Clone du repo

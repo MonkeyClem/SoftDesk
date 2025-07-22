@@ -1,8 +1,18 @@
 from rest_framework import permissions
 
-class isCommentAuthorOrReadOnly(permissions.BasePermission) :
+class IsCommentAuthorOrReadOnly(permissions.BasePermission) :
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
         # Pour écrire, l'utilisateur doit être l'auteur
         return obj.author == request.user
+
+class IsProjectAuthorForContributor(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.project.author == request.user
+
+
+class IsContributorForProject(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        user = request.user
+        return obj.project.contributors.filter(user=user).exists()
