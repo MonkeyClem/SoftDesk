@@ -27,7 +27,6 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
     """
 
     def has_object_permission(self, request, view, obj):
-        # Lecture : autorisé à tous les contributeurs
         if request.method in permissions.SAFE_METHODS:
             return True
         # Écriture : seulement l'auteur
