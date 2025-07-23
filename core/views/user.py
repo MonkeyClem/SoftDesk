@@ -11,8 +11,7 @@ class UserViewSet(ModelViewSet):
     permission_classes = [AllowAny] 
 
     def get_queryset(self):
-        # Ne retourne que le compte de l'utilisateur connecté
-        return User.objects.filter(id=self.request.user.id)
+        return User.objects.filter(accept_to_share_data=True)
 
     def destroy(self, request, *args, **kwargs):
         # Empêche la suppression d'autres comptes
