@@ -1,5 +1,19 @@
 from rest_framework import permissions
 
+
+class IsAuthorOrReadOnly(permissions.BasePermission):
+    """
+    Seul l'auteur peut modifier ou supprimer le projet.
+    Tous les contributeurs peuvent lire.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        # Écriture : seulement l'auteur
+        return obj.author == request.user
+
+
 class IsCommentAuthorOrReadOnly(permissions.BasePermission) :
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
